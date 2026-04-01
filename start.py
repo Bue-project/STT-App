@@ -73,16 +73,19 @@ class VoiceDictationTool:
         print("🔄 While recording, add Shift to transition to locked mode")
     
     def _initialize_openai_client(self) -> OpenAI:
-        """Initialize OpenAI client with API key from environment."""
-        api_key = os.getenv('OPENAI_API_KEY')
+        """Initialize OpenAI client pointing to OpenRouter."""
+        api_key = os.getenv('OPENROUTER_API_KEY')
         if not api_key:
             raise ValueError(
-                "❌ OPENAI_API_KEY not found in environment variables.\n"
-                "Please create a .env file with your OpenAI API key:\n"
-                "OPENAI_API_KEY=your-api-key-here"
+                "❌ OPENROUTER_API_KEY not found in environment variables.\n"
+                "Please create a .env file with your OpenRouter API key:\n"
+                "OPENROUTER_API_KEY=your-api-key-here"
             )
-        
-        return OpenAI(api_key=api_key)
+
+        return OpenAI(
+            api_key=api_key,
+            base_url="https://openrouter.ai/api/v1"
+        )
     
     def _initialize_recordings_file(self):
         """Initialize the recordings JSON file if it doesn't exist."""

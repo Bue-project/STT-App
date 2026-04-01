@@ -11,7 +11,7 @@ RECORDING_SETTINGS = {
 
 # OpenAI API settings
 API_SETTINGS = {
-    'model': 'gpt-4o-mini-transcribe',  # Fixed model name for OpenAI Whisper API
+    'model': 'openai/whisper-1',  # Whisper via OpenRouter
     'response_format': 'text',
     'prompt': "The following is a transcript of a person talking, you can remove and duplicated words and any fillers words. If its a longer transcript put into paragraphs for better readability."
 }
